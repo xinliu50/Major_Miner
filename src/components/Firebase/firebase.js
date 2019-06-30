@@ -1,6 +1,6 @@
-import React from 'react';
 import app from 'firebase/app';
-
+import 'firebase/auth';
+import React from 'react';
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -10,9 +10,37 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 };
 
+/*var config = {
+    apiKey: "AIzaSyDD9v_OHP17-bC2ZyuHVo1zsH2LkgnIAVo",
+    authDomain: "majorminer-dd13a.firebaseapp.com",
+    databaseURL: "https://majorminer-dd13a.firebaseio.com",
+    projectId: "majorminer-dd13a",
+    storageBucket: "",
+    messagingSenderId: "526186255270",
+    appId: "1:526186255270:web:33fae3c93451bbd8"
+  };*/
+
 class Firebase {
   constructor() {
     app.initializeApp(config);
+
+    this.auth = app.auth();
   }
+
+  // *** Auth API ***
+
+  doCreateUserWithEmailAndPassword = (email, password) =>
+    this.auth.createUserWithEmailAndPassword(email, password);
+
+  doSignInWithEmailAndPassword = (email, password) =>
+    this.auth.signInWithEmailAndPassword(email, password);
+
+  doSignOut = () => this.auth.signOut();
+
+  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+
+  doPasswordUpdate = password =>
+    this.auth.currentUser.updatePassword(password);
 }
+
 export default Firebase;
