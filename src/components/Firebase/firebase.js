@@ -1,6 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
-import React from 'react';
+
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -8,9 +8,10 @@ const config = {
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APPID,
 };
 
-/*var config = {
+/*const config = {
     apiKey: "AIzaSyDD9v_OHP17-bC2ZyuHVo1zsH2LkgnIAVo",
     authDomain: "majorminer-dd13a.firebaseapp.com",
     databaseURL: "https://majorminer-dd13a.firebaseio.com",
@@ -23,7 +24,6 @@ const config = {
 class Firebase {
   constructor() {
     app.initializeApp(config);
-
     this.auth = app.auth();
   }
 
