@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -11,20 +12,11 @@ const config = {
   appId: process.env.REACT_APP_APPID,
 };
 
-/*const config = {
-    apiKey: "AIzaSyDD9v_OHP17-bC2ZyuHVo1zsH2LkgnIAVo",
-    authDomain: "majorminer-dd13a.firebaseapp.com",
-    databaseURL: "https://majorminer-dd13a.firebaseio.com",
-    projectId: "majorminer-dd13a",
-    storageBucket: "",
-    messagingSenderId: "526186255270",
-    appId: "1:526186255270:web:33fae3c93451bbd8"
-  };*/
-
 class Firebase {
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
+    this.db = app.database();
   }
 
   // *** Auth API ***
@@ -45,6 +37,12 @@ class Firebase {
 
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
+
+  // *** User API ***
+
+  user = uid => this.db.ref(`users/${uid}`);
+
+  users = () => this.db.ref('users');
 }
 
 export default Firebase;
