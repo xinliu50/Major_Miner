@@ -1,0 +1,8 @@
+.Navi{
+	margin-right:10px;
+	color: black;
+}
+
+a:hover {
+	background-color: yellow;
+}
