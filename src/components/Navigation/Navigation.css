@@ -1,8 +1,31 @@
 .Navi{
-	margin-right:10px;
-	color: black;
+	margin-top: 0%;
+	margin-left: 1%;
+	margin-right: 1%;
+	border: solid;
+	background-color: white;
+	height: 30px;
+
 }
 
+a {
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+a:link {
+  color: red;
+}
+
+a:visited {
+  color: green;
+}
+
+
 a:hover {
-	background-color: yellow;
+  color: hotpink;
+}
+
+a:active {
+  color: blue;
 }

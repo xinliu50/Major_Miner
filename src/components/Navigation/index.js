@@ -6,46 +6,36 @@ import { AuthUserContext } from '../Session';
 import "./Navigation.css";
 
 const Navigation = () => (
-  <div className="Navi">
-    <AuthUserContext.Consumer>
-      {authUser =>
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />
-      }
-    </AuthUserContext.Consumer>
-    <h1>
-    sssss
-    </h1>
+  <div>
+    <div className="Navi">
+      <AuthUserContext.Consumer>
+        {authUser =>
+          authUser ? <NavigationAuth /> : <NavigationNonAuth />
+        }
+      </AuthUserContext.Consumer>
+    </div>
   </div>
 );
 const NavigationAuth = () => (
-  <ul>
-    <li>
+ <div>
       <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
+    
       <Link to={ROUTES.HOME}>Home</Link>
-    </li>
-    <li>
+    
       <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
-    <li>
+    
       <Link to={ROUTES.ADMIN}>Admin</Link>
-    </li>
-    <li>
+    
       <SignOutButton />
-    </li>
-  </ul>
+ </div>
 );
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
+ <div className="Navi"> 
       <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
+    
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
-  </ul>
+ </div>  
 );
 
 export default Navigation;
